@@ -1,0 +1,36 @@
+{
+  "name": "manahelbackend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "bin": "main.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "no"
+  },
+  "pkg": {
+    "assets": "node_modules/**/*",
+    "targets": [
+      "node12-linux"
+    ],
+    "outputPath": "dist"
+  },
+  "author": "Oualid KHIAL",
+  "license": "ISC",
+  "dependencies": {
+    "sqlite3": "^5.0.2",
+    "apollo-server": "^3.5.0",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "graphql": "^16.0.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "path": "^0.12.7",
+    "sequelize": "^6.3.5"
+  }
+}
