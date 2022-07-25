@@ -9,6 +9,7 @@ const ClassMetaData = require("../../Schemas/ClassMetaData");
 const Session = require("../../Schemas/Session");
 const SessionMeta = require("../../Schemas/SessionMetaData");
 const PaymentMetaData = require("../../Schemas/PaymentMetaData");
+const Parent = require("../../Schemas/Parent");
 
 Student.belongsToMany(Class, {
     through: ClassMetaData,
@@ -31,6 +32,7 @@ Payment.hasMany(PaymentMetaData, {foreignKey: "paymentId"})
 
 Class.hasMany(Session, {as : 'ClassSessions', foreignKey : 'classId'});
 
+Student.belongsTo(Parent, {foreignKey : 'parentId'})
 class StudentRouters {
     constructor() {
         this.create = router.post('/create',  async (req, res) => {
@@ -74,6 +76,7 @@ class StudentRouters {
         });
 
         this.getAll = router.get('/getAll/:offset/:limit',  async (req, res) => {
+            console.log('jkghkjhkj')
             var {offset, limit} = req.params;
             limit = parseInt(limit);
             offset = parseInt(offset);
@@ -85,8 +88,11 @@ class StudentRouters {
                 .then(stores =>
                     res.send({'finalResult': true, 'result': stores})
                 )
-                .catch(err =>
-                    res.send({'finalResult': false, 'error': true})
+                .catch(err =>{
+                        console.log(err)
+                        res.send({'finalResult': false, 'error': true})
+                }
+
                 );
         });
 
@@ -110,6 +116,10 @@ class StudentRouters {
                         {
                             model: Session,
                             as: "Sessions",
+                        },
+                        {
+                            model: Parent,
+                            as: "Parent",
                         },
 
                     ],

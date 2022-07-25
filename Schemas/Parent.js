@@ -3,7 +3,7 @@ const db = require('../apis/sqConnection');
 
 
 
-const Student = db.define('Students', {
+const Parent = db.define('Parents', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -14,26 +14,25 @@ const Student = db.define('Students', {
         allowNull: false
     },
     mail: {
-        type: Sequelize.STRING,
-        allowNull: true
+        type: Sequelize.STRING(30),
+        allowNull: false
     },
     phone: {
         type: Sequelize.STRING,
         allowNull: true
     },
-    birthDate: {
-        type: Sequelize.DATE,
-        allowNull: false,
-    },
-    sex: {
+    sexe: {
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
-    facebook:{
+    messenger: {
         type: Sequelize.STRING(30),
     },
-    image:{
+    image: {
         type: Sequelize.STRING
+    },
+    address:{
+        type: Sequelize.STRING(200),
     },
     x:{
         type: Sequelize.DOUBLE
@@ -41,15 +40,8 @@ const Student = db.define('Students', {
     y:{
         type: Sequelize.DOUBLE
     },
-    stat:{
-        type: Sequelize.INTEGER
-    },
-    parentId:{
-        type: Sequelize.INTEGER,
-        allowNull: true
-    },
 });
 
 
 
-module.exports = Student;
+module.exports = Parent;
