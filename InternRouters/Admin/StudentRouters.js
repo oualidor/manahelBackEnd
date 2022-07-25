@@ -36,14 +36,14 @@ Student.belongsTo(Parent, {foreignKey : 'parentId'})
 class StudentRouters {
     constructor() {
         this.create = router.post('/create',  async (req, res) => {
-            let {phone, birthDate, name, sexe, mail, parentName, parentPhone, parentRelation} = req.body;
+            let {name, mail, phone, birthDate, sex, parentId} = req.body;
             let validatedData = true;
             let dataError = "";
 
             if(!validatedData){
                 res.send({'finalResult': false,  'error': dataError});
             }else{
-                let data = {phone, birthDate, name, sexe, mail, parentName, parentPhone, parentRelation};
+                let data = {name, mail, phone, birthDate, sex, parentId};
                 try {
                     await Student.create(data);
                     res.send({'finalResult': true, 'result': true})
