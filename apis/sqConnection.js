@@ -19,7 +19,7 @@ const db = new Sequelize('manahel', 'root', '', {
 });
 */
 
-const dbPath = path.join(__dirname, "db.sqlite")
+const dbPath = path.join(__dirname, "db2022-2023.sqlite")
 const db = new Sequelize({
     // sqlite! now!
     dialect: 'sqlite',
