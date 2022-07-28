@@ -1,10 +1,14 @@
 const express = require('express');
-
+const AdminParentRouter = require("../InternRouters/Admin/AminParentRouter");
 
 const router = express.Router();
 
 //Admin Login
 
+
+//Parent
+
+router.use("/Parent",   AdminParentRouter);
 //Student Manipulation
 const AdminStudentRouters = require("../InternRouters/Admin/StudentRouters");
 let studentRouters = new AdminStudentRouters();
@@ -25,6 +29,7 @@ router.use("/Class",   classRouters.create);
 //Class Manipulation
 const AdminSessionRouters = require("../InternRouters/Admin/SessionRouter");
 const PaymentRouter = require("../InternRouters/Admin/PaymentRouter");
+
 
 let sessionRouters = new AdminSessionRouters();
 router.use("/Session",   sessionRouters.create);

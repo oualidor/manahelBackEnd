@@ -22,12 +22,4 @@ const Payment = db.define('Payments', {
 });
 
 
-/*
-Payments.belongsTo(Class, {
-    foreignKey: {
-        name: 'classId'
-    }
-});*/
-
-
 module.exports = Payment;

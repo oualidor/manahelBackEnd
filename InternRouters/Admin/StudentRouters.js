@@ -35,15 +35,18 @@ Class.hasMany(Session, {as : 'ClassSessions', foreignKey : 'classId'});
 Student.belongsTo(Parent, {foreignKey : 'parentId'})
 class StudentRouters {
     constructor() {
+
+
+
         this.create = router.post('/create',  async (req, res) => {
-            let {name, mail, phone, birthDate, sex, parentId} = req.body;
+            let {name, mail, phone, birthDate, sex, parentId, parentRelation} = req.body;
             let validatedData = true;
             let dataError = "";
 
             if(!validatedData){
                 res.send({'finalResult': false,  'error': dataError});
             }else{
-                let data = {name, mail, phone, birthDate, sex, parentId};
+                let data = {name, mail, phone, birthDate, sex, parentId, parentRelation};
                 try {
                     await Student.create(data);
                     res.send({'finalResult': true, 'result': true})

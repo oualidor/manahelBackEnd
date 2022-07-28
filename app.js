@@ -20,6 +20,8 @@ const adminRouters       = require("./routers/adminRouters");
 const GuestRouters       = require("./routers/GuestRouters");
 const TeacherRouter = require("./routers/TeacherRouter");
 
+
+
 app.use('/guest/', GuestRouters);
 app.use('/admin/', adminRouters);
 app.use('/teacher/', TeacherRouter);
@@ -27,6 +29,9 @@ app.use(express.static('public'));
 app.use('/storeImages', express.static(__dirname + '/public/uploads'));
 // Define the maximum size for uploading
 // picture i.e. 1 MB. it is optional
+
+
+
 
 
 app.listen(process.env.PORT || 5000, () => {

@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="DB2022-2023" uuid="6e282cf8-1d9c-4c60-b4a3-c64f28f572dc">
-      <driver-ref>sqlite.xerial</driver-ref>
+    <data-source source="LOCAL" name="Heroku" uuid="13aaf8fc-5757-41ab-896e-9cd9600738f4">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/apis/DB2022-2023.sqlite</jdbc-url>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://ec2-44-195-100-240.compute-1.amazonaws.com:5432/ddjfnmoialdni0</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.38.0/sqlite-jdbc-3.38.0.jar</url>
-        </library>
-      </libraries>
     </data-source>
   </component>
 </project>

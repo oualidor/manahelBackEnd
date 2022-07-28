@@ -1,8 +1,5 @@
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
-const Class = require("./Class");
 
 
 const Session = db.define('Sessions', {

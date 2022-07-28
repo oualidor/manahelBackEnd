@@ -20,12 +20,6 @@ const Level = db.define('Levels', {
     },
 });
 
-// Class.belongsTo(Teacher, {
-//     foreignKey: {
-//         name: 'teacherId'
-//     }
-// });
-
 db.sync()
 
 
