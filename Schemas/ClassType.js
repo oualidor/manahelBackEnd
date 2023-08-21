@@ -1,8 +1,4 @@
-const Teacher = require( "./Teacher");
-
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
 
 
@@ -19,14 +15,6 @@ const ClassType = db.define('ClassTypes', {
         allowNull: false
     },
 });
-
-// Class.belongsTo(Teacher, {
-//     foreignKey: {
-//         name: 'teacherId'
-//     }
-// });
-
-db.sync()
 
 
 module.exports = ClassType;

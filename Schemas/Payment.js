@@ -1,9 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../apis/sqConnection');
-const Student = require("./Student");
-const Class = require("./Class");
-const PaymentMetaData = require("./PaymentMetaData");
-
 
 const Payment = db.define('Payments', {
     id: {

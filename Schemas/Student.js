@@ -2,8 +2,11 @@ const Sequelize = require('sequelize');
 const db = require('../apis/sqConnection');
 const {Model} = require("sequelize");
 
-class Student  extends Model {}
+class Student  extends Model {
+
+}
 const attributes = {
+
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -61,12 +64,12 @@ const attributes = {
     sex: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
-        validate: {
-            isIn: {
-                args: [['0', '1']],
-                msg: 'اختر الجنس من فضلك'
-            },
-        }
+        // validate: {
+        //     isIn: {
+        //         args: [[0, 1]],
+        //         msg: 'اختر الجنس من فضلك'
+        //     },
+        // }
     },
     facebook:{
         type: Sequelize.STRING(30),
@@ -77,10 +80,15 @@ const attributes = {
     x:{
         type: Sequelize.DOUBLE
     },
+    stat:{
+        type: Sequelize.INTEGER,
+        allowNull: false
+    },
     y:{
         type: Sequelize.DOUBLE
     },
-    stat:{
+
+    currentLevel:{
         type: Sequelize.INTEGER
     },
     parentId:{
@@ -91,10 +99,11 @@ const attributes = {
         type: Sequelize.INTEGER,
         allowNull: true
     },
+
 }
 
 const options = {sequelize: db, modelName: 'Students'}
-Student.init(attributes, options)
 
+Student.init(attributes, options)
 
 module.exports = Student;

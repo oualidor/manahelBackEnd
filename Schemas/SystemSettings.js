@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../apis/sqConnection');
-//defining the model
 
 const SystemSettings = db.define('SystemSettings', {
     id: {

@@ -1,17 +1,9 @@
-const Teacher = require( "./Teacher");
-const Module = require( "./Module");
-const Level = require( "./Level");
-const ClassType = require( "./ClassType");
-const ClassContract = require( "./ClassContract");
-
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
+const {Model} = require("sequelize");
+class Class  extends Model {}
+const ModelAttributes =  {
 
-
-
-const Class = db.define('Classes', {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -43,23 +35,13 @@ const Class = db.define('Classes', {
     managed: {
         type: Sequelize.BOOLEAN,
     },
-
-
-});
-
-Class.belongsTo(Teacher, {
-    foreignKey: {
-        name: 'teacherId'
+    updatedAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()')
     }
-});
-Class.belongsTo(Module, {foreignKey: {name: 'moduleId'}});
-Class.belongsTo(Level, {foreignKey: {name: 'levelId'}});
-
-Class.belongsTo(ClassType, {foreignKey: {name: 'typeId'}});
-Class.belongsTo(ClassContract, {foreignKey: {name: 'contractId'}});
 
 
-db.sync()
-
-
+};
+const Options = {sequelize: db, modelName: 'Classes'}
+Class.init(ModelAttributes, Options)
 module.exports = Class;

@@ -6,6 +6,7 @@ const Teacher = require("../Schemas/Teacher");
 const Validator = require("../apis/DataValidator");
 const {jwtPrivateKey} = require("../config/globalConstants");
 const GuestRouters = express.Router();
+const argon2 = require('argon2');
 // GuestRouters.use(async (req, res, next)=>{
 //     await YitAuthenticator.authAll(req, res, next)
 // })
@@ -98,11 +99,13 @@ GuestRouters.post('/TeachersLogin', async (req, res) => {
             let teacher = await Teacher.findOne({where: {phone: phone}})
             if(teacher !== null){
                 try{
-                    if(bcrypt.compareSync(password, teacher.hashedPassword)) {
-                        const accessToken = jwt.sign({id: teacher.id, userType:"partner"}, jwtPrivateKey);
+                    console.log(teacher.hashedPassword)
+                    if(await argon2.verify(teacher.hashedPassword, password)) {
+
+                        const accessToken = jwt.sign({id: teacher.id, userType:"teacher"}, jwtPrivateKey);
                         await res.json({"finalResult": true, token: accessToken})
                     } else {
-                        res.json({finalResult: false, error: "wrong email or pafdfdsfdsfssword"})
+                        res.json({finalResult: false, error: "wrong phone or password"})
                     }
                 }catch (error){
                     console.log(error)

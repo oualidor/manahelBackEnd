@@ -18,14 +18,13 @@ const Teacher = db.define('Teachers', {
     },
     hashedPassword: {
         type: Sequelize.STRING,
-        unique: true,
         allowNull: false
     },
     name: {
         type: Sequelize.STRING(30),
         allowNull: false
     },
-    sexe: {
+    sex: {
         type: Sequelize.BOOLEAN,
         allowNull: false
     },
@@ -35,10 +34,12 @@ const Teacher = db.define('Teachers', {
     image: {
         type: Sequelize.STRING
     },
-    valid:{
+    stat:{
         type: Sequelize.INTEGER
     },
 });
+
+db.sync()
 
 
 

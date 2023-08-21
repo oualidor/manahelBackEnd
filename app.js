@@ -16,9 +16,16 @@ app.use(express.urlencoded());
 // Parse JSON bodies (as sent by API clients)
 app.use(express.json());
 
+
 const adminRouters       = require("./routers/adminRouters");
 const GuestRouters       = require("./routers/GuestRouters");
 const TeacherRouter = require("./routers/TeacherRouter");
+const SetRelations = require("./apis/Relations");
+
+
+
+
+SetRelations()
 
 
 

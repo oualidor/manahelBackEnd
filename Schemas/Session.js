@@ -1,14 +1,14 @@
 const Sequelize = require('sequelize');
 const db = require('../apis/sqConnection');
-
-
-const Session = db.define('Sessions', {
+const {Model} = require("sequelize");
+class Session  extends Model {}
+const attributes = {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    SuperViser:{
+    Supervisor:{
         type: Sequelize.STRING,
         allowNull: false
     },
@@ -26,7 +26,8 @@ const Session = db.define('Sessions', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-});
+}
+const options = {modelName: 'Sessions', sequelize: db}
 
-db.sync();
+Session.init(attributes, options)
 module.exports = Session;

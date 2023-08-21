@@ -1,16 +1,8 @@
-const Teacher = require( "./Teacher");
-const Module = require( "./Module");
-const Level = require( "./Level");
-const ClassType = require( "./ClassType");
-
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
-
-
-
-const ClassSession = db.define('ClassSessions', {
+const {Model} = require("sequelize");
+class ClassSession  extends Model {}
+const Attributes = {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -36,9 +28,7 @@ const ClassSession = db.define('ClassSessions', {
         type: Sequelize.INTEGER,
         allowNull: false
     },
-});
-
-db.sync()
-
-
+}
+const Options = {sequelize: db, modelName: 'ClassSessions'}
+ClassSession.init(Attributes, Options)
 module.exports = ClassSession;

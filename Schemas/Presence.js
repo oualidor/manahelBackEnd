@@ -3,9 +3,11 @@ const Sequelize = require('sequelize');
 
 const db = require('../apis/sqConnection');
 const Student = require("./Student");
+const Session = require("./Session");
+const {Model} = require("sequelize");
 
-
-const Presence = db.define('Presence', {
+class Presence  extends Model {}
+const attributes = {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -17,13 +19,11 @@ const Presence = db.define('Presence', {
     sessionId: {
         type: Sequelize.INTEGER,
     },
-});
+}
 
-Presence.belongsTo(Student, {
-    foreignKey: {
-        name: 'studentId'
-    }
-});
+const options = {sequelize: db, modelName: 'Presence'}
+Presence.init(attributes, options)
+
 
 
 

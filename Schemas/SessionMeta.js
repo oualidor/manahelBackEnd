@@ -1,14 +1,10 @@
-
-
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
-const Session = require("./Session");
-const Student = require("./Student");
+const {Model} = require("sequelize");
 
 
-const SessionMeta = db.define('SessionsMeta', {
+class SessionMeta  extends Model {}
+const attributes = {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
@@ -29,22 +25,9 @@ const SessionMeta = db.define('SessionsMeta', {
         type: Sequelize.STRING,
         allowNull: false
     }
-});
+}
+const options = {sequelize: db, modelName: 'SessionsMeta'}
+SessionMeta.init(attributes, options)
 
-
-
-SessionMeta.belongsTo(Session, {
-    foreignKey: {
-        name: 'sessionId'
-    }
-});
-
-SessionMeta.belongsTo(Student, {
-    foreignKey: {
-        name: 'dataValue'
-    }
-});
-
-db.sync();
 
 module.exports = SessionMeta;

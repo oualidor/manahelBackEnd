@@ -88,10 +88,14 @@ class ClassRouters {
             Class.findAndCountAll({
                 offset: offset,
                 limit: limit,
+                where: {
+                    teacherId:  req.body.id
+                },
                 include: [
                     {model: Teacher,},
                     {model: ClassContract,},
-                    {model: ClassSession, as: 'ClassSession'}
+                    {model: ClassSession, as: 'ClassSession'},
+                    {model: Student}
                 ]
             })
                 .then(Classes =>

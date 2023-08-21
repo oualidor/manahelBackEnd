@@ -1,10 +1,5 @@
-const Teacher = require( "./Teacher");
-
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
-
 
 
 const Level = db.define('Levels', {
@@ -18,9 +13,11 @@ const Level = db.define('Levels', {
         unique: true,
         allowNull: false
     },
+    updatedAt: {
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('NOW()')
+    }
 });
-
-db.sync()
 
 
 module.exports = Level;

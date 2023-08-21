@@ -1,9 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('../apis/sqConnection');
-const Student = require("./Student");
-const Class = require("./Class");
-const Payment = require("./Payment");
-
 
 
 const PaymentMetaData = db.define('PaymentMeta', {
@@ -27,5 +23,5 @@ const PaymentMetaData = db.define('PaymentMeta', {
 });
 
 
-db.sync();
+
 module.exports = PaymentMetaData;

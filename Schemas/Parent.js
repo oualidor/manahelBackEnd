@@ -61,7 +61,20 @@ const ModelAttributes = {
         type: Sequelize.DOUBLE
     },
 }
-const Options = {sequelize: db, modelName: 'Parents'}
+const Options = {
+    sequelize: db,
+    modelName: 'Parents',
+    indexes: [
+        {
+            unique: true,
+            fields: ['name', 'mail',]
+        },
+        {
+            unique: true,
+            fields: ['name', 'phone',]
+        }
+    ]
+}
 Parent.init(ModelAttributes, Options)
 
 

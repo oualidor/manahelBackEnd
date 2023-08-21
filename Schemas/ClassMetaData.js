@@ -1,10 +1,5 @@
-
-
 const Sequelize = require('sequelize');
-
-
 const db = require('../apis/sqConnection');
-const Student = require("./Student");
 
 
 const ClassMetaData = db.define('ClassMeta', {
@@ -30,10 +25,4 @@ const ClassMetaData = db.define('ClassMeta', {
     }
 });
 
-ClassMetaData.belongsTo(Student, {
-    foreignKey: {
-        name: 'dataValue'
-    }
-});
-db.sync();
 module.exports = ClassMetaData;
